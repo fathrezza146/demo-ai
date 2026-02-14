@@ -5,7 +5,6 @@ const baseUrl = rawBaseUrl && rawBaseUrl.length > 0 ? rawBaseUrl : window.locati
 const normalizedBaseUrl = baseUrl.replace(/\/+$/, "")
 
 export const apiClient = ky.create({
-  prefixUrl: `${normalizedBaseUrl}/api`,
-  credentials: "include",
+  prefixUrl: `${normalizedBaseUrl}`,
   timeout: 10000,
 })
