@@ -1,0 +1,12 @@
+Login Specifications:
+  description: User can login using email only
+  components: |
+    1. Input field for email
+    2. Button for login
+    3. Company Name shown
+  acceptance criteria: |
+    1. User can login using the right registered email
+    2. Application should show error message of `User Not Found` if user is not registered
+    3. if the user is successfully logged in, the application should redirect based on the role of the user:
+      1. if the user is an admin, the application should redirect to `/dashboard`
+      2. if the user is a user, the application should redirect to `/approval`
