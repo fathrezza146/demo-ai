@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import { pool } from "../config/db";
+import { env } from "../config/env";
 import type { AuthenticatedRequest } from "../middleware/authMiddleware";
 import { sendError, sendOk } from "../utils/http";
 
@@ -82,7 +83,7 @@ export const login = async (req: Request, res: Response): Promise<Response> => {
   }
 
   const normalizedEmail = email.trim();
-  const jwtSecret = process.env.JWT_SECRET;
+  const jwtSecret = env.jwtSecret;
 
   if (!jwtSecret) {
     return sendError(res, 500, "JWT_SECRET is not configured");

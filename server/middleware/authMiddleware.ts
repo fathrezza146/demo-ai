@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import jwt, { JwtPayload } from "jsonwebtoken";
+import { env } from "../config/env";
 import { sendError } from "../utils/http";
 
 interface TokenPayload extends JwtPayload {
@@ -32,7 +33,7 @@ export const authenticateToken = (
     return sendError(res, 401, "Authorization format must be Bearer <token>");
   }
 
-  const jwtSecret = process.env.JWT_SECRET;
+  const jwtSecret = env.jwtSecret;
   if (!jwtSecret) {
     return sendError(res, 500, "JWT_SECRET is not configured");
   }
